@@ -1,10 +1,13 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom'; // Import useNavigate
 import './App.css'; // Import the CSS file for styling
 
 function App() {
   const [firstName, setFirstName] = useState(''); // State for first name
   const [lastName, setLastName] = useState(''); // State for last name
   const [message, setMessage] = useState(''); // State for message
+
+  const navigate = useNavigate(); // Initialize navigate function
 
   // Function to handle form submission
   const handleSubmit = async (event) => {
@@ -20,6 +23,11 @@ function App() {
 
     const text = await response.text();
     setMessage(text); // Update message with response
+  };
+
+  // Function to navigate to Page 2
+  const navigateToPage2 = () => {
+    navigate('/page2');
   };
 
   return (
@@ -43,6 +51,7 @@ function App() {
           <button type="submit">Submit</button> {/* Submit button */}
         </form>
         <p>{message}</p> {/* Display the message */}
+        <button onClick={navigateToPage2}>Page 2</button> {/* Navigation button */}
       </div>
   );
 }
