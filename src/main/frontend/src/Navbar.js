@@ -1,17 +1,15 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import './Navbar.css'; // Import the CSS file for styling
+import './Navbar.css';
 
 function Navbar() {
     return (
         <nav>
-            <div>
-
             <Link to="/">Home</Link>
-            <span> | </span> {/* This creates a space between the links */}
-            <Link to="/page2">Page 2</Link>
-            </div>
-
+            <span> | </span>
+            <Link to="/register">Register</Link>
+            <span> | </span>
+            <Link to="/cart">Cart</Link>
         </nav>
     );
 }

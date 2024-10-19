@@ -1,59 +1,72 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom'; // Import useNavigate
-import './App.css'; // Import the CSS file for styling
+import { useNavigate } from 'react-router-dom';
+import './App.css';
 
 function App() {
-  const [firstName, setFirstName] = useState(''); // State for first name
-  const [lastName, setLastName] = useState(''); // State for last name
-  const [message, setMessage] = useState(''); // State for message
+  const [firstName, setFirstName] = useState('');
+  const [lastName, setLastName] = useState('');
+  const [message, setMessage] = useState('');
 
-  const navigate = useNavigate(); // Initialize navigate function
+  const navigate = useNavigate();
 
-  // Function to handle form submission
   const handleSubmit = async (event) => {
-    event.preventDefault(); // Prevent default form submission
+    event.preventDefault();
 
-    const response = await fetch('/hello/personalized', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ firstName, lastName }), // Use state variables
-    });
+    // Validate input
+    if (!firstName.trim() || !lastName.trim()) {
+      setMessage('First name and last name cannot be blank.');
+      return;
+    }
 
-    const text = await response.text();
-    setMessage(text); // Update message with response
-  };
+    try {
+      const response = await fetch('/hello/personalized', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ firstName, lastName }),
+      });
 
-  // Function to navigate to Page 2
-  const navigateToPage2 = () => {
-    navigate('/page2');
+      if (!response.ok) {
+        const errorMsg = await response.text(); // Get server error message
+        throw new Error(errorMsg || 'Network response was not ok');
+      }
+
+      const text = await response.text();
+      setMessage(text);
+
+      // Clear input fields
+      setFirstName('');
+      setLastName('');
+    } catch (error) {
+      console.error('Error:', error);
+      setMessage('There was an error processing your request: ' + error.message);
+    }
   };
 
   return (
       <div className="App">
-        <h1>Personalized Greeting</h1> {/* Page header */}
+        <h1>Register Today for Discounts</h1>
         <form onSubmit={handleSubmit}>
           <input
               type="text"
               placeholder="First Name"
               value={firstName}
-              onChange={(e) => setFirstName(e.target.value)} // Update state on change
+              onChange={(e) => setFirstName(e.target.value)}
               required
           />
           <input
               type="text"
               placeholder="Last Name"
               value={lastName}
-              onChange={(e) => setLastName(e.target.value)} // Update state on change
+              onChange={(e) => setLastName(e.target.value)}
               required
           />
-          <button type="submit">Submit</button> {/* Submit button */}
+          <button type="submit">Submit</button>
         </form>
-        <p>{message}</p> {/* Display the message */}
-        <button onClick={navigateToPage2}>Page 2</button> {/* Navigation button */}
+        <p>{message}</p>
       </div>
   );
 }
 
-export default App; // Export the App component
+export default App;
