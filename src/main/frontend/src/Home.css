@@ -1,0 +1,37 @@
+.home {
+    padding: 20px;
+    text-align: center;
+}
+
+.hero {
+    background: #f8f8f8;
+    padding: 50px 0;
+}
+
+.featured-products {
+    margin: 20px 0;
+}
+
+.product-grid {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.product-card {
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    margin: 10px;
+    padding: 20px;
+    width: 200px;
+}
+
+.product-card img {
+    max-width: 100%;
+    border-radius: 10px;
+}
+
+.testimonials {
+    margin-top: 40px;
+    font-style: italic;
+}

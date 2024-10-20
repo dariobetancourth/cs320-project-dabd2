@@ -4,7 +4,6 @@ public class Person {
     private String firstName;
     private String lastName;
 
-    // Getter and Setter for firstName
     public String getFirstName() {
         return firstName;
     }
@@ -13,7 +12,6 @@ public class Person {
         this.firstName = firstName;
     }
 
-    // Getter and Setter for lastName
     public String getLastName() {
         return lastName;
     }

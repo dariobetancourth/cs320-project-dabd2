@@ -1,32 +1,68 @@
 package org.acme;
 
-import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
-import io.quarkus.hibernate.orm.panache.PanacheEntity;
-import jakarta.validation.constraints.NotNull;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Column;
 
 @Entity
-@Table(name = "products")
-public class Product extends PanacheEntity {
-    @NotNull
-    @Column(name = "product_name", nullable = false, length = 100)
-    public String productName;
+public class Product {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long productId;
 
-    @NotNull
-    @Column(name = "price", nullable = false)
-    public double price;
+    @Column(nullable = false)
+    private String productType;
 
-    // Default constructor
+    @Column(nullable = false)
+    private int quantity;
+
+    @Column(nullable = false)
+    private double price; // Add price field
+
+    // Constructors
     public Product() {}
 
-    public Product(String productName, double price) {
-        this.productName = productName;
+    public Product(String productType, int quantity, double price) {
+        this.productType = productType;
+        this.quantity = quantity;
         this.price = price;
     }
 
-    @Override
-    public String toString() {
-        return "Product{id=" + id + ", productName='" + productName + "', price=" + price + "}";
+    public Product(String exampleProduct, double v) {
+    }
+
+    // Getters and Setters
+    public Long getProductId() {
+        return productId;
+    }
+
+    public void setProductId(Long productId) {
+        this.productId = productId;
+    }
+
+    public String getProductType() {
+        return productType;
+    }
+
+    public void setProductType(String productType) {
+        this.productType = productType;
+    }
+
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
+    }
+
+    public double getPrice() {
+        return price;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
     }
 }

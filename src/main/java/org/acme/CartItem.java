@@ -17,17 +17,14 @@ public class CartItem extends PanacheEntity {
     @Column(name = "quantity", nullable = false)
     public int quantity;
 
-    // Default constructor
     public CartItem() {}
 
-    // Constructor with fields
     public CartItem(String productName, double price, int quantity) {
         this.productName = productName;
         this.price = price;
         this.quantity = quantity;
     }
 
-    // Getters for price and quantity
     public double getPrice() {
         return price;
     }

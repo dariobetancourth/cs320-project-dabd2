@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
+import Home from './Home';
+import ProductList from './ProductList';
 import './App.css';
 
 function App() {
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
   const [message, setMessage] = useState('');
-
-  const navigate = useNavigate();
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -28,7 +28,7 @@ function App() {
       });
 
       if (!response.ok) {
-        const errorMsg = await response.text(); // Get server error message
+        const errorMsg = await response.text();
         throw new Error(errorMsg || 'Network response was not ok');
       }
 
@@ -65,6 +65,7 @@ function App() {
           <button type="submit">Submit</button>
         </form>
         <p>{message}</p>
+        {/* Removed the Router here */}
       </div>
   );
 }

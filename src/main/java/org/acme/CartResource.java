@@ -15,14 +15,14 @@ public class CartResource {
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public List<CartItem> getCartItems() {
-        return CartItem.listAll(); // Retrieve all cart items
+        return CartItem.listAll();
     }
 
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Transactional
     public String addCartItem(CartItem item) {
-        item.persist(); // Save the cart item to the database
+        item.persist();
         return "Cart item added: " + item.productName;
     }
 
@@ -31,10 +31,7 @@ public class CartResource {
     @Path("/total")
     public double calculateTotal() {
         return CartItem.streamAll()
-                .mapToDouble(item -> {
-                    CartItem cartItem = (CartItem) item; // Cast to CartItem
-                    return cartItem.getPrice() * cartItem.getQuantity();
-                })
-                .sum(); // Calculate total price
+                .mapToDouble(item -> ((CartItem) item).getPrice() * ((CartItem) item).getQuantity())
+                .sum();
     }
 }

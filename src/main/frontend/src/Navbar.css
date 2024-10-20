@@ -1,37 +1,31 @@
-/* Navigation styles */
-nav {
-    background-color: #333; /* Dark background for the nav */
-    padding: 1rem;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3); /* Add shadow for depth */
+.navbar {
+    background-color: #333;
+    color: white;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
-/* Unordered list styles */
-ul {
-    display: flex; /* Use flexbox for layout */
-    list-style: none; /* Remove default list styles */
-    justify-content: space-around; /* Space items evenly */
-    margin: 0; /* Remove default margin */
-    padding: 0; /* Remove default padding */
+.navbar img.logo {
+    height: 50px; /* Set logo height */
+    margin-right: 20px; /* Space between logo and nav links */
 }
 
-/* List item link styles */
-li a {
-    color: white; /* White text color */
-    text-decoration: none; /* Remove underline */
-    padding: 10px 20px; /* Padding around links */
-    font-size: 18px; /* Font size */
-    transition: background-color 0.3s ease, transform 0.2s ease; /* Smooth transition for hover effects */
-    border-radius: 5px; /* Rounded corners */
+.navbar ul {
+    list-style: none;
+    display: flex;
 }
 
-/* Hover effect styles */
-li a:hover {
-    background-color: #555; /* Darker background on hover */
-    transform: translateY(-2px); /* Slight lift effect on hover */
+.navbar li {
+    margin: 0 15px;
 }
 
-/* Optional: Active link styles */
-li a.active {
-    background-color: #444; /* Active link background */
-    font-weight: bold; /* Make active link bold */
+.navbar a {
+    color: white;
+    text-decoration: none;
+}
+
+.navbar a:hover {
+    text-decoration: underline;
 }

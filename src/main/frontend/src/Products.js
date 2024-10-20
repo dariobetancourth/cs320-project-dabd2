@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import './Products.css'; // Make sure to create a CSS file for styles
 
 function Products() {
     const [products, setProducts] = useState([]);
@@ -45,7 +46,9 @@ function Products() {
             <div className="product-list">
                 {products.map(product => (
                     <div key={product.id} className="product-item">
+                        <img src={product.imgSrc} alt={product.productName} className="product-image" />
                         <h2>{product.productName}</h2>
+                        <p>{product.description}</p>
                         <p>Price: ${product.price}</p>
                         <label>
                             Quantity:

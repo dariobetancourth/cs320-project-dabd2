@@ -8,7 +8,7 @@ import jakarta.ws.rs.Produces;
 import jakarta.ws.rs.Consumes;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.PathParam;
-import jakarta.ws.rs.BadRequestException;
+import org.acme.exceptions.AppException;
 
 @Path("/hello")
 public class GreetingResource {
@@ -25,13 +25,10 @@ public class GreetingResource {
     @Path("/personalized")
     @Transactional
     public String personalizedHelloPost(Person person) {
-        // Validate input
-        if (person.getFirstName() == null || person.getFirstName().trim().isEmpty() ||
-                person.getLastName() == null || person.getLastName().trim().isEmpty()) {
-            throw new BadRequestException("First name and last name cannot be blank.");
+        if (person.getFirstName() == null || person.getFirstName().trim().isEmpty()) {
+            throw new AppException("First name cannot be blank.");
         }
 
-        // Create a new UserName object
         UserName userName = new UserName(person.getFirstName() + " " + person.getLastName());
         userName.persist();
 
