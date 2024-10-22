@@ -4,10 +4,11 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import io.quarkus.hibernate.orm.panache.PanacheEntityBase;
 import jakarta.persistence.Column;
 
 @Entity
-public class Product {
+public class Product extends PanacheEntityBase {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long productId;
@@ -19,9 +20,9 @@ public class Product {
     private int quantity;
 
     @Column(nullable = false)
-    private double price; // Add price field
+    private double price;
 
-    // Constructors
+    // Constructors, getters, and setters
     public Product() {}
 
     public Product(String productType, int quantity, double price) {
@@ -30,10 +31,6 @@ public class Product {
         this.price = price;
     }
 
-    public Product(String exampleProduct, double v) {
-    }
-
-    // Getters and Setters
     public Long getProductId() {
         return productId;
     }
