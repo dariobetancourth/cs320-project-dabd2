@@ -1,3 +1,7 @@
+/*
+ * CSS file for styling the ProductList component.
+ * Contains styles for layout, product item cards, and responsive adjustments.
+ */
 .product-list {
     padding: 20px;
 }

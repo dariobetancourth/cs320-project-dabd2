@@ -6,19 +6,20 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import io.quarkus.hibernate.orm.panache.PanacheEntityBase;
 import jakarta.persistence.Column;
-/**
- * Represents a product in the e-commerce application, containing details such as name, price, and description.
- * This entity is used to manage and persist product data in the database.
- */
 
+/**
+ * Represents an item in the e-commerce application, containing details such as name, price, and description.
+ * This entity is used to manage and persist item data in the database.
+ */
 @Entity
-public class Product extends PanacheEntityBase {
+public class Item extends PanacheEntityBase {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long productId;
+    private Long itemId;
 
     @Column(nullable = false)
-    private String productType;
+    private String itemName;
 
     @Column(nullable = false)
     private int quantity;
@@ -26,29 +27,28 @@ public class Product extends PanacheEntityBase {
     @Column(nullable = false)
     private double price;
 
-    // Constructors, getters, and setters
-    public Product() {}
+    public Item() {}
 
-    public Product(String productType, int quantity, double price) {
-        this.productType = productType;
+    public Item(String itemName, int quantity, double price) {
+        this.itemName = itemName;
         this.quantity = quantity;
         this.price = price;
     }
 
-    public Long getProductId() {
-        return productId;
+    public Long getItemId() {
+        return itemId;
     }
 
-    public void setProductId(Long productId) {
-        this.productId = productId;
+    public void setItemId(Long itemId) {
+        this.itemId = itemId;
     }
 
-    public String getProductType() {
-        return productType;
+    public String getItemName() {
+        return itemName;
     }
 
-    public void setProductType(String productType) {
-        this.productType = productType;
+    public void setItemName(String itemName) {
+        this.itemName = itemName;
     }
 
     public int getQuantity() {

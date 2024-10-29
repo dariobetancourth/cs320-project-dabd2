@@ -5,6 +5,9 @@ import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
 import java.util.List;
+/**
+ * Simple REST API resource that provides a greeting message. Can be used for testing or as a basic example of a REST endpoint.
+ */
 
 @Path("/hello")
 @Produces(MediaType.APPLICATION_JSON)
@@ -13,7 +16,7 @@ public class GreetingResource {
 
     @GET
     public List<UserName> listAllUsers() {
-        return UserName.listAll(); // List all users
+        return UserName.listAll();
     }
 
     @POST
@@ -24,7 +27,7 @@ public class GreetingResource {
             return Response.status(Response.Status.BAD_REQUEST).entity("First name cannot be blank.").build();
         }
 
-        UserName userName = new UserName(person.getFirstName() + " " + person.getLastName());
+        UserName userName = new UserName(person.getFirstName(), person.getLastName());
         userName.persist();
         return Response.status(Response.Status.CREATED).entity(userName).build();
     }
@@ -47,8 +50,9 @@ public class GreetingResource {
         if (userName == null) {
             return Response.status(Response.Status.NOT_FOUND).build();
         }
-        userName.setName(person.getFirstName() + " " + person.getLastName());
-        userName.persist(); // Save the updated user
+        userName.setFirstName(person.getFirstName());
+        userName.setLastName(person.getLastName());
+        userName.persist();
         return Response.ok(userName).build();
     }
 

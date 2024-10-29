@@ -1,53 +1,57 @@
+/* Center the main container */
+/*
+ * Global CSS file for styling the main App component and its layout.
+ * Contains base styles and layout adjustments for consistent appearance across the app.
+ */
+
 .App {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+}
+
+/* Center and style the form sections */
+h1, h2 {
   text-align: center;
 }
 
-h1, h2 {
-  color: #333;
-}
-
 form {
-  margin: 20px;
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+  justify-content: center;
 }
 
-input {
-  margin: 5px;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
+.register-container, .inventory-container {
+  width: 100%;
+  max-width: 600px;
 }
 
-button {
-  padding: 10px 15px;
-  border: none;
-  background-color: #28a745;
-  color: white;
-  cursor: pointer;
-  margin-left: 5px;
-}
-
-button:hover {
-  background-color: #218838;
-}
-
-/* New styling for person list */
-.person-list {
+/* Center the lists */
+.person-list, .inventory-list {
   list-style-type: none;
   padding: 0;
-}
-
-.person-item {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
   align-items: center;
-  margin-bottom: 10px;
+  width: 100%;
 }
 
-.person-item button {
-  margin-left: 10px;
-  background-color: #dc3545;
+.person-item, .inventory-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  max-width: 600px;
+  padding: 10px;
+  border: 1px solid #ddd;
+  margin-bottom: 5px;
+  border-radius: 5px;
+  background-color: #f9f9f9;
 }
 
-.person-item button:hover {
-  background-color: #c82333;
+.person-buttons, .inventory-buttons {
+  display: flex;
+  gap: 5px;
 }

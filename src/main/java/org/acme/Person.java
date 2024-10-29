@@ -6,6 +6,10 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
+/**
+ * Represents a person entity, used for registration or user management purposes. Contains basic fields such as first name and last name.
+ * This entity can be used in scenarios where user information needs to be stored or manipulated.
+ */
 
 @Entity
 public class Person {

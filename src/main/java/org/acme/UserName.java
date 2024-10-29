@@ -6,35 +6,54 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
+/**
+ * Represents a user or username entity, possibly used for authentication or personalization purposes in the application.
+ * Contains user-specific fields and can be used for user management or greeting functionality.
+ */
 
 @Entity
-@Table(name = "user_names") // Ensure the table name matches your database schema
+@Table(name = "user_names")
 public class UserName extends PanacheEntity {
 
     @NotNull
     @Size(min = 1, max = 50)
-    @Column(name = "name", nullable = false, length = 50)
-    public String name;
+    @Column(name = "first_name", nullable = false, length = 50)
+    public String firstName;
+
+    @NotNull
+    @Size(min = 1, max = 50)
+    @Column(name = "last_name", nullable = false, length = 50)
+    public String lastName;
 
     public UserName() {}
 
-    public UserName(String name) {
-        this.name = name;
+    public UserName(String firstName, String lastName) {
+        this.firstName = firstName;
+        this.lastName = lastName;
     }
 
-    public String getName() {
-        return name;
+    public String getFirstName() {
+        return firstName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 
     @Override
     public String toString() {
         return "UserName{" +
-                "id=" + id + // id is now provided by extending PanacheEntity
-                ", name='" + name + '\'' +
+                "id=" + id +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
                 '}';
     }
 }

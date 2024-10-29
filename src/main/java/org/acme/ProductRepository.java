@@ -3,6 +3,10 @@ package org.acme;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.transaction.Transactional;
 import java.util.List;
+/**
+ * Repository interface for managing Product entities. Extends PanacheRepository to provide data access methods for products.
+ * This interface allows CRUD operations on products, such as adding, updating, or retrieving product information.
+ */
 
 @ApplicationScoped
 public class ProductRepository {

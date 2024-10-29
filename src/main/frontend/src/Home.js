@@ -1,11 +1,15 @@
 import React from 'react';
 import './Home.css';
+/**
+ * Component representing the home page of the application.
+ * Provides an introductory section and general information about the store or app.
+ */
 
 const Home = () => {
     return (
         <div className="home">
             <header className="hero">
-                <h1>Welcome to Our Store!</h1>
+                <h1>Welcome to Ensign Amazon!</h1>
                 <p>Your one-stop shop for the best products.</p>
             </header>
             <section className="featured-products">

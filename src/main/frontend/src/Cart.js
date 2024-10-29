@@ -1,4 +1,8 @@
 import React, { useEffect, useState } from 'react';
+/**
+ * Component representing the user's shopping cart. Displays items added to the cart and provides options for updating or removing them.
+ * Includes functionality to calculate total price and manage cart actions.
+ */
 
 function Cart() {
     const [cartItems, setCartItems] = useState([]);

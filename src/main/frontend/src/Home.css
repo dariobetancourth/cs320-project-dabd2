@@ -1,11 +1,16 @@
+/*
+ * CSS file for styling the Home component.
+ * Contains styles specific to the home page, including layout and text styling.
+ */
 .home {
     padding: 20px;
     text-align: center;
 }
 
 .hero {
-    background: #f8f8f8;
+    background: #f8f8f8; /* Light grey background for contrast */
     padding: 50px 0;
+    color: #000; /* Ensures text is black */
 }
 
 .featured-products {

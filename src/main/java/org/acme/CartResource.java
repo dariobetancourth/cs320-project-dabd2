@@ -13,6 +13,10 @@ import jakarta.transaction.Transactional;
 import jakarta.ws.rs.PathParam;
 import java.util.List;
 
+/**
+ * REST API resource for managing cart items. Provides endpoints for adding, removing, and viewing items in the cart.
+ * This resource interacts with the CartItem entity and performs CRUD operations for the shopping cart.
+ */
 @Path("/cart")
 public class CartResource {
 
@@ -27,7 +31,7 @@ public class CartResource {
     @Transactional
     public String addCartItem(CartItem item) {
         item.persist();
-        return "Cart item added: " + item.productName;
+        return "Cart item added: " + item.itemName;
     }
 
     @GET

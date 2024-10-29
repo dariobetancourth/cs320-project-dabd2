@@ -1,3 +1,7 @@
+/*
+ * CSS file for styling the Navbar component.
+ * Contains styles for navigation links, layout, and responsive adjustments.
+ */
 .navbar {
     background-color: #333;
     color: white;

@@ -5,6 +5,10 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Column;
+/**
+ * Represents a customer entity in the e-commerce application, containing personal information and account details.
+ * Used in the backend to manage customer-related data in the database.
+ */
 
 @Entity
 public class Customer {

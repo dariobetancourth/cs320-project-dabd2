@@ -1,4 +1,7 @@
 import React from 'react';
+/**
+ * Placeholder component for a secondary page. Can be customized for additional functionality, such as product categories or a special feature page.
+ */
 
 const Page2 = () => {
     return (

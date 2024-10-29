@@ -5,6 +5,10 @@ import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
 import jakarta.transaction.Transactional;
 import java.util.List;
+/**
+ * REST API resource for managing customer orders. Provides endpoints for creating, viewing, and updating orders.
+ * This resource interacts with the CustomerOrder entity and enables order management functionality.
+ */
 
 @Path("/customer-orders")
 @Produces(MediaType.APPLICATION_JSON)

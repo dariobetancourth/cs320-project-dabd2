@@ -8,6 +8,10 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Column;
 import jakarta.persistence.Table;
 import java.time.LocalDate;
+/**
+ * Represents an order made by a customer, including details like items, quantities, and order status.
+ * Used in the backend to track and manage customer orders.
+ */
 
 @Entity
 @Table(name = "customer_orders") // Ensure this table name does not conflict with SQL reserved keywords

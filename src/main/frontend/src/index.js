@@ -1,3 +1,7 @@
+/**
+ * Root JavaScript file that initializes the React application and renders the App component into the DOM.
+ * Sets up the root React environment and enables functionality like strict mode.
+ */
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
@@ -5,6 +9,9 @@ import App from './App';
 import Cart from './Cart'; // Import Cart component
 import Home from './Home'; // Import Home component
 import Navbar from './Navbar';
+import Items from "./Items";
+
+
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 // Create a root element for React
@@ -19,6 +26,7 @@ root.render(
                 <Route path="/" element={<Home />} /> {/* Home page */}
                 <Route path="/register" element={<App />} /> {/* Registration page */}
                 <Route path="/cart" element={<Cart />} /> {/* Cart page */}
+                <Route path="/items" element={<Items />} /> {/* Cart page */}
             </Routes>
         </BrowserRouter>
     </React.StrictMode>

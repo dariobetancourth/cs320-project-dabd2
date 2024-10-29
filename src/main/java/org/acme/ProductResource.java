@@ -6,6 +6,10 @@ import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
 import jakarta.transaction.Transactional;
 import java.util.List;
+/**
+ * REST API resource for managing products in the e-commerce application. Provides endpoints for creating, updating, deleting, and retrieving products.
+ * This resource interacts with the Product entity to enable product management functionality.
+ */
 
 @Path("/products")
 public class ProductResource {
