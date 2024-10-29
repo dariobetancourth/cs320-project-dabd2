@@ -4,8 +4,9 @@ import { Route, Routes } from 'react-router-dom';
 import Home from './Home';
 import ProductList from './ProductList';
 import Cart from './Cart';
-import Navbar from './Navbar';
 import './App.css';
+import { API_URL } from './config';
+
 
 /**
  * Main entry point of the React application. Renders the primary components and sets up routing for different pages.
@@ -161,8 +162,6 @@ function App() {
 
     return (
         <div className="App">
-            <Navbar />
-
             {/* Register Section */}
             <h1>Register Page</h1>
             <form onSubmit={handleRegisterSubmit}>

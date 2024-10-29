@@ -7,10 +7,6 @@ import jakarta.persistence.Id;
 import io.quarkus.hibernate.orm.panache.PanacheEntityBase;
 import jakarta.persistence.Column;
 
-/**
- * Represents an item in the e-commerce application, containing details such as name, price, and description.
- * This entity is used to manage and persist item data in the database.
- */
 @Entity
 public class Item extends PanacheEntityBase {
 
@@ -21,6 +17,9 @@ public class Item extends PanacheEntityBase {
     @Column(nullable = false)
     private String itemName;
 
+    @Column(nullable = true)
+    private String description;
+
     @Column(nullable = false)
     private int quantity;
 
@@ -29,10 +28,11 @@ public class Item extends PanacheEntityBase {
 
     public Item() {}
 
-    public Item(String itemName, int quantity, double price) {
+    public Item(String itemName, int quantity, double price, String description) {
         this.itemName = itemName;
         this.quantity = quantity;
         this.price = price;
+        this.description = description;
     }
 
     public Long getItemId() {
@@ -65,5 +65,13 @@ public class Item extends PanacheEntityBase {
 
     public void setPrice(double price) {
         this.price = price;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 }

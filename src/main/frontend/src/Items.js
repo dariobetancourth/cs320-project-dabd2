@@ -1,4 +1,3 @@
-// Items.js
 import React, { useEffect, useState } from 'react';
 import './Items.css';
 
@@ -14,13 +13,18 @@ function Items() {
         itemName: '',
         description: '',
         price: ''
-    }); // State for new item without imgSrc
+    });
 
     useEffect(() => {
-        fetch('/api/items') // Updated endpoint
-            .then(response => response.json())
-            .then(data => setItems(data));
+        fetchItems();
     }, []);
+
+    const fetchItems = () => {
+        fetch('/api/items')
+            .then(response => response.json())
+            .then(data => setItems(data))
+            .catch(error => console.error('Error fetching items:', error));
+    };
 
     const handleQuantityChange = (itemId, quantity) => {
         setSelectedItems(prev => ({
@@ -30,7 +34,7 @@ function Items() {
     };
 
     const addToCart = (item) => {
-        const quantity = selectedItems[item.id] || 1;
+        const quantity = selectedItems[item.itemId] || 1;
         const cartItem = {
             itemName: item.itemName,
             quantity,
@@ -52,7 +56,7 @@ function Items() {
             })
             .then(message => {
                 setConfirmationMessage(`"${item.itemName}" has been added to your cart!`);
-                setSelectedItems(prev => ({ ...prev, [item.id]: 1 }));
+                setSelectedItems(prev => ({ ...prev, [item.itemId]: 1 }));
             })
             .catch(error => alert(error.message));
     };
@@ -68,7 +72,7 @@ function Items() {
     const handleAddItem = (e) => {
         e.preventDefault();
 
-        fetch('/api/items', { // Updated endpoint
+        fetch('/api/items', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -82,9 +86,23 @@ function Items() {
                 return response.json();
             })
             .then(data => {
-                setItems(prev => [...prev, data]); // Update the item list with the new item
+                setItems(prev => [...prev, data]);
                 setConfirmationMessage(`"${newItem.itemName}" has been added successfully!`);
-                setNewItem({ itemName: '', description: '', price: '' }); // Reset the form without imgSrc
+                setNewItem({ itemName: '', description: '', price: '' });
+            })
+            .catch(error => alert(error.message));
+    };
+
+    const deleteItem = (itemId) => {
+        fetch(`/api/items/${itemId}`, {
+            method: 'DELETE',
+        })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Failed to delete item');
+                }
+                setItems(prevItems => prevItems.filter(item => item.itemId !== itemId));
+                setConfirmationMessage('Item deleted successfully!');
             })
             .catch(error => alert(error.message));
     };
@@ -110,7 +128,6 @@ function Items() {
                     placeholder="Description"
                     value={newItem.description}
                     onChange={handleInputChange}
-                    required
                 />
                 <input
                     type="number"
@@ -125,7 +142,7 @@ function Items() {
 
             <div className="item-list">
                 {items.map(item => (
-                    <div key={item.id} className="item-item">
+                    <div key={item.itemId} className="item-item">
                         <h2>{item.itemName}</h2>
                         <p>{item.description}</p>
                         <p>Price: ${item.price}</p>
@@ -135,10 +152,11 @@ function Items() {
                                 type="number"
                                 min="1"
                                 defaultValue="1"
-                                onChange={(e) => handleQuantityChange(item.id, e.target.value)}
+                                onChange={(e) => handleQuantityChange(item.itemId, e.target.value)}
                             />
                         </label>
                         <button onClick={() => addToCart(item)}>Add to Cart</button>
+                        <button onClick={() => deleteItem(item.itemId)}>Delete</button> {/* Delete button */}
                     </div>
                 ))}
             </div>
