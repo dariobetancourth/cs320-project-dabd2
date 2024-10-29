@@ -2,7 +2,7 @@
   text-align: center;
 }
 
-h1 {
+h1, h2 {
   color: #333;
 }
 
@@ -23,8 +23,31 @@ button {
   background-color: #28a745;
   color: white;
   cursor: pointer;
+  margin-left: 5px;
 }
 
 button:hover {
   background-color: #218838;
+}
+
+/* New styling for person list */
+.person-list {
+  list-style-type: none;
+  padding: 0;
+}
+
+.person-item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.person-item button {
+  margin-left: 10px;
+  background-color: #dc3545;
+}
+
+.person-item button:hover {
+  background-color: #c82333;
 }

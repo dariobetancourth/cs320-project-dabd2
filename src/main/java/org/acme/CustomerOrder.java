@@ -1,14 +1,18 @@
 package org.acme;
 
+import io.quarkus.hibernate.orm.panache.PanacheEntityBase;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Column;
+import jakarta.persistence.Table;
 import java.time.LocalDate;
 
 @Entity
-public class Order {
+@Table(name = "customer_orders") // Ensure this table name does not conflict with SQL reserved keywords
+public class CustomerOrder extends PanacheEntityBase {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long orderNumber;
@@ -32,7 +36,6 @@ public class Order {
     private String toZip;
 
     private LocalDate shipDate;
-
     private Long productId;
 
     // Getters and Setters
